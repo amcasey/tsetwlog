@@ -397,6 +397,65 @@ namespace tsetwlog {
 		delete pActivity;
 		return nullptr;
 	}
+
+	napi_value LogStartWatchFile(napi_env env, napi_callback_info args) {
+		if (!sendEvents) return nullptr;
+
+		if (!GetStringArg(env, args, 1, chBuf1)) return nullptr;
+
+		ThreadActivityPtr pActivity = AddActivity(L"WatchFile");
+		if (pActivity == nullptr) return nullptr;
+
+		TraceLoggingWriteStart(*pActivity, "WatchFile",
+			TraceLoggingWideString(chBuf1, "msg")
+		);
+
+		return nullptr;
+	}
+
+	napi_value LogStopWatchFile(napi_env env, napi_callback_info args) {
+		if (!sendEvents && nextActivityIndex == 0) {
+			return nullptr;
+		}
+
+		ThreadActivityPtr pActivity = GetRunningActivity(L"WatchFile");
+		if (pActivity == nullptr) return nullptr;
+
+		TraceLoggingWriteStop(*pActivity, "WatchFile");
+		delete pActivity;
+		return nullptr;
+	}
+
+	napi_value LogStartWatchDirectory(napi_env env, napi_callback_info args) {
+		if (!sendEvents) return nullptr;
+
+		if (!GetStringArg(env, args, 1, chBuf1)) return nullptr;
+		if (!GetStringArg(env, args, 2, chBuf2)) return nullptr;
+
+		ThreadActivityPtr pActivity = AddActivity(L"WatchDirectory");
+		if (pActivity == nullptr) return nullptr;
+
+		TraceLoggingWriteStart(*pActivity, "WatchDirectory",
+			TraceLoggingWideString(chBuf1, "msg"),
+			TraceLoggingWideString(chBuf2, "flags")
+		);
+
+		return nullptr;
+	}
+
+	napi_value LogStopWatchDirectory(napi_env env, napi_callback_info args) {
+		if (!sendEvents && nextActivityIndex == 0) {
+			return nullptr;
+		}
+
+		ThreadActivityPtr pActivity = GetRunningActivity(L"WatchDirectory");
+		if (pActivity == nullptr) return nullptr;
+
+		TraceLoggingWriteStop(*pActivity, "WatchDirectory");
+		delete pActivity;
+		return nullptr;
+	}
+
 	napi_value LogStartBindFile(napi_env env, napi_callback_info args) {
 		if (!sendEvents) return nullptr;
 

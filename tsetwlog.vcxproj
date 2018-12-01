@@ -152,6 +152,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="index.d.ts">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
     <None Include="test.js" />
   </ItemGroup>
   <ItemGroup>

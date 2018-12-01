@@ -57,6 +57,10 @@ namespace tsetwlog {
 	napi_value LogStopParseSourceFile(napi_env env, napi_callback_info args);
 	napi_value LogStartReadFile(napi_env env, napi_callback_info args);
 	napi_value LogStopReadFile(napi_env env, napi_callback_info args);
+	napi_value LogStartWatchFile(napi_env env, napi_callback_info args);
+	napi_value LogStopWatchFile(napi_env env, napi_callback_info args);
+	napi_value LogStartWatchDirectory(napi_env env, napi_callback_info args);
+	napi_value LogStopWatchDirectory(napi_env env, napi_callback_info args);
 	napi_value LogStartBindFile(napi_env env, napi_callback_info args);
 	napi_value LogStopBindFile(napi_env env, napi_callback_info args);
 	napi_value LogStartScheduledOperation(napi_env env, napi_callback_info args);
