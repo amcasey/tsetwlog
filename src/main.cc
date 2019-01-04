@@ -49,8 +49,8 @@ namespace tsetwlog {
 			register_fn("logStopParseSourceFile", LogStopParseSourceFile) &&
 			register_fn("logStartReadFile", LogStartReadFile) &&
 			register_fn("logStopReadFile", LogStopReadFile) &&
-			register_fn("logStartWatchFile", LogStartParseSourceFile) &&
-			register_fn("logStopWatchFile", LogStopParseSourceFile) &&
+			register_fn("logStartWatchFile", LogStartWatchFile) &&
+			register_fn("logStopWatchFile", LogStopWatchFile) &&
 			register_fn("logStartWatchDirectory", LogStartWatchDirectory) &&
 			register_fn("logStopWatchDirectory", LogStopWatchDirectory) &&
 			register_fn("logStartBindFile", LogStartBindFile) &&
