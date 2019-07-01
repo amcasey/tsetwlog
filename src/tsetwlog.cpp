@@ -290,11 +290,16 @@ namespace tsetwlog {
 
 	napi_value LogStartUpdateGraph(napi_env env, napi_callback_info args) {
 		if (!sendEvents) return nullptr;
+		if (!GetStringArg(env, args, 1, chBuf1)) return nullptr;
+		if (!GetStringArg(env, args, 2, chBuf2)) return nullptr;
 
 		ThreadActivityPtr pActivity = AddActivity(L"UpdateGraph");
 		if (pActivity == nullptr) return nullptr;
 
-		TraceLoggingWriteStart(*pActivity, "UpdateGraph");
+		TraceLoggingWriteStart(*pActivity, "UpdateGraph",
+			TraceLoggingWideString(chBuf1, "project"),
+			TraceLoggingWideString(chBuf2, "msg")
+		);
 
 		return nullptr;
 	}

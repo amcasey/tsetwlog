@@ -8,7 +8,7 @@ export function logStartCommand(command: string, msg: string): void;
 export function logStopCommand(command: string, msg: string): void;
 export function logStartUpdateProgram(msg: string): void;
 export function logStopUpdateProgram(msg: string): void;
-export function logStartUpdateGraph(): void;
+export function logStartUpdateGraph(project: string, msg: string): void;
 export function logStopUpdateGraph(): void;
 export function logStartResolveModule(name: string): void;
 export function logStopResolveModule(success: string): void;
